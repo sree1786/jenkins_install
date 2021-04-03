@@ -1,0 +1,96 @@
+https://www.linuxtechi.com/install-configure-jenkins-on-centos-7-rhel-7/
+
+
+
+=================================
+Installation
+============================
+
+[root@vc2coma2440057n ~]#  wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat-stable/jenkins.repo
+--2020-02-11 02:15:05--  http://pkg.jenkins.io/redhat-stable/jenkins.repo
+Resolving http.proxy.fmr.com (http.proxy.fmr.com)... 10.243.228.6
+Connecting to http.proxy.fmr.com (http.proxy.fmr.com)|10.243.228.6|:8000... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 85
+Saving to: ‘/etc/yum.repos.d/jenkins.repo’
+
+100%[========================================================================================================>] 85          --.-K/s   in 0s
+
+2020-02-11 02:15:05 (16.1 MB/s) - ‘/etc/yum.repos.d/jenkins.repo’ saved [85/85]
+
+[root@vc2coma2440057n ~]# rpm --import http://pkg.jenkins.io/redhat-stable/jenkins.io.key
+[root@vc2coma2440057n ~]#  yum install jenkins java-1.8.0-openjdk –y
+besagent                                                                                                                   | 2.9 kB  00:00:00
+dbmwrhel7                                                                                                                  | 2.9 kB  00:00:00
+jenkins                                                                                                                    | 2.9 kB  00:00:00
+rhel-7-server-eus-extras-rpms                                                                                              | 3.6 kB  00:00:00
+rhel-7-server-eus-optional-rpms                                                                                            | 3.6 kB  00:00:00
+rhel-7-server-eus-rh-common-rpms                                                                                           | 3.6 kB  00:00:00
+rhel-7-server-eus-rpms                                                                                                     | 3.6 kB  00:00:00
+rhel-server-rhscl-7-eus-rpms                                                                                               | 3.6 kB  00:00:00
+jenkins/primary_db                                                                                                         |  31 kB  00:00:00
+Package 1:java-1.8.0-openjdk-1.8.0.222.b10-0.el7_6.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package jenkins.noarch 0:2.204.2-1.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================================================================================
+ Package                           Arch                             Version                               Repository                         Size
+==================================================================================================================================================
+Installing:
+ jenkins                           noarch                           2.204.2-1.1                           jenkins                            60 M
+
+Transaction Summary
+==================================================================================================================================================
+Install  1 Package
+
+Total download size: 60 M
+Installed size: 60 M
+Is this ok [y/d/N]: y
+Downloading packages:
+jenkins-2.204.2-1.1.noarch.rpm                                                                                             |  60 MB  00:00:44
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : jenkins-2.204.2-1.1.noarch                                                                                                     1/1
+  Verifying  : jenkins-2.204.2-1.1.noarch                                                                                                     1/1
+
+Installed:
+  jenkins.noarch 0:2.204.2-1.1
+
+Complete!
+[root@vc2coma2440057n ~]#
+
+
+[root@vc2coma2440057n ~]# systemctl start jenkins
+[root@vc2coma2440057n ~]# systemctl enable jenkins
+jenkins.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig jenkins on
+[root@vc2coma2440057n ~]#
+
+
+[root@vc2coma2440057n ~]# firewall-cmd --zone=public --add-port=8080/tcp --permanent
+success
+[root@vc2coma2440057n ~]# firewall-cmd --zone=public --add-service=http --permanent
+Warning: ALREADY_ENABLED: http
+success
+[root@vc2coma2440057n ~]# firewall-cmd --reload
+success
+[root@vc2coma2440057n ~]#
+
+
+To see intinal passweord
+Cd /var/lib/jenkins/secrets/
+More intinaladminpassword
+
+
+Login URL(USE ONLY HTTP)
++++++++++++++++++++++++
+
+
+
+
