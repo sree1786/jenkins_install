@@ -1,0 +1,14 @@
+ install jenkins
+create the maven project 
+install tomcat  and try to access outside
+all of above find document in other files in same repository
+Once Jenkins, maven and tomcat ready
+crete credentail  manage jenkisn --> Credentials --> jenkins --> Global credentials --> add credentail 
+chcek Source Code Management --> git repository delcared or not  ex: https://github.com/sree1786/ValaxyTech-hello-world.git (Repository URL)
+build Root POM( pom.xml) and Goals and options (clean install package)
+install deploy to container pulgin on availble area
+then come to Post-build Actions --> Deploy war/ear to a container --> WAR/EAR files --> **/*.war
+Post-build Actions --> Containers --> Tomcat 8.x Remote ( select credntial) --> Tomcat URL ( give tomcat url ex: http://54.152.11.147:8090/)
+After first test add below one for automatic testing for everey two min
+Build Triggers --> Poll SCM --> */2 * * * * --> save 
+how can you test --> http://54.152.11.147:8090/webapp/ ( http://IPADDRESS:port/webapp/ )
