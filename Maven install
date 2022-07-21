@@ -1,0 +1,250 @@
+
+
+[root@ip-172-31-89-84 ~]# mkdir -p /opt/maven
+[root@ip-172-31-89-84 ~]# cd /opt/maven/
+[root@ip-172-31-89-84 maven]# wget https://dlcdn.apache.org/maven/maven-3/3.8.6/                                                                                        binaries/apache-maven-3.8.6-bin.tar.gz
+--2022-07-21 04:42:30--  https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/a                                                                                        pache-maven-3.8.6-bin.tar.gz
+Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
+Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connecte                                                                                        d.
+HTTP request sent, awaiting response... 200 OK
+Length: 8676320 (8.3M) [application/x-gzip]
+Saving to: ‘apache-maven-3.8.6-bin.tar.gz’
+
+100%[======================================>] 8,676,320   --.-K/s   in 0.08s
+
+2022-07-21 04:42:30 (101 MB/s) - ‘apache-maven-3.8.6-bin.tar.gz’ saved [8676320/                                                                                        8676320]
+
+[root@ip-172-31-89-84 maven]# ls
+apache-maven-3.8.6-bin.tar.gz
+[root@ip-172-31-89-84 maven]# tar -xvzf apache-maven-3.8.6-bin.tar.gz
+apache-maven-3.8.6/README.txt
+apache-maven-3.8.6/LICENSE
+apache-maven-3.8.6/NOTICE
+apache-maven-3.8.6/lib/
+apache-maven-3.8.6/lib/commons-cli.license
+apache-maven-3.8.6/lib/commons-io.license
+apache-maven-3.8.6/lib/commons-lang3.license
+apache-maven-3.8.6/lib/guava.license
+apache-maven-3.8.6/lib/guice.license
+apache-maven-3.8.6/lib/jansi.license
+apache-maven-3.8.6/lib/javax.annotation-api.license
+apache-maven-3.8.6/lib/javax.inject.license
+apache-maven-3.8.6/lib/jcl-over-slf4j.license
+apache-maven-3.8.6/lib/org.eclipse.sisu.inject.license
+apache-maven-3.8.6/lib/org.eclipse.sisu.plexus.license
+apache-maven-3.8.6/lib/plexus-cipher.license
+apache-maven-3.8.6/lib/plexus-component-annotations.license
+apache-maven-3.8.6/lib/plexus-interpolation.license
+apache-maven-3.8.6/lib/plexus-sec-dispatcher.license
+apache-maven-3.8.6/lib/plexus-utils.license
+apache-maven-3.8.6/lib/slf4j-api.license
+apache-maven-3.8.6/boot/
+apache-maven-3.8.6/boot/plexus-classworlds.license
+apache-maven-3.8.6/lib/jansi-native/
+apache-maven-3.8.6/lib/jansi-native/Windows/
+apache-maven-3.8.6/lib/jansi-native/Windows/x86/
+apache-maven-3.8.6/lib/jansi-native/Windows/x86_64/
+apache-maven-3.8.6/lib/jansi-native/Windows/x86/jansi.dll
+apache-maven-3.8.6/lib/jansi-native/Windows/x86_64/jansi.dll
+apache-maven-3.8.6/bin/m2.conf
+apache-maven-3.8.6/bin/mvn.cmd
+apache-maven-3.8.6/bin/mvnDebug.cmd
+apache-maven-3.8.6/bin/mvn
+apache-maven-3.8.6/bin/mvnDebug
+apache-maven-3.8.6/bin/mvnyjp
+apache-maven-3.8.6/conf/
+apache-maven-3.8.6/conf/logging/
+apache-maven-3.8.6/conf/logging/simplelogger.properties
+apache-maven-3.8.6/conf/settings.xml
+apache-maven-3.8.6/conf/toolchains.xml
+apache-maven-3.8.6/lib/ext/
+apache-maven-3.8.6/lib/jansi-native/
+apache-maven-3.8.6/lib/ext/README.txt
+apache-maven-3.8.6/lib/jansi-native/README.txt
+apache-maven-3.8.6/boot/plexus-classworlds-2.6.0.jar
+apache-maven-3.8.6/lib/maven-embedder-3.8.6.jar
+apache-maven-3.8.6/lib/maven-settings-3.8.6.jar
+apache-maven-3.8.6/lib/maven-settings-builder-3.8.6.jar
+apache-maven-3.8.6/lib/maven-plugin-api-3.8.6.jar
+apache-maven-3.8.6/lib/maven-model-3.8.6.jar
+apache-maven-3.8.6/lib/maven-model-builder-3.8.6.jar
+apache-maven-3.8.6/lib/maven-builder-support-3.8.6.jar
+apache-maven-3.8.6/lib/maven-resolver-api-1.6.3.jar
+apache-maven-3.8.6/lib/maven-resolver-util-1.6.3.jar
+apache-maven-3.8.6/lib/maven-shared-utils-3.3.4.jar
+apache-maven-3.8.6/lib/commons-io-2.6.jar
+apache-maven-3.8.6/lib/guice-4.2.2-no_aop.jar
+apache-maven-3.8.6/lib/guava-25.1-android.jar
+apache-maven-3.8.6/lib/javax.inject-1.jar
+apache-maven-3.8.6/lib/javax.annotation-api-1.2.jar
+apache-maven-3.8.6/lib/plexus-utils-3.3.1.jar
+apache-maven-3.8.6/lib/plexus-sec-dispatcher-2.0.jar
+apache-maven-3.8.6/lib/plexus-cipher-2.0.jar
+apache-maven-3.8.6/lib/slf4j-api-1.7.36.jar
+apache-maven-3.8.6/lib/commons-lang3-3.8.1.jar
+apache-maven-3.8.6/lib/maven-core-3.8.6.jar
+apache-maven-3.8.6/lib/maven-repository-metadata-3.8.6.jar
+apache-maven-3.8.6/lib/maven-artifact-3.8.6.jar
+apache-maven-3.8.6/lib/maven-resolver-provider-3.8.6.jar
+apache-maven-3.8.6/lib/maven-resolver-impl-1.6.3.jar
+apache-maven-3.8.6/lib/maven-resolver-spi-1.6.3.jar
+apache-maven-3.8.6/lib/org.eclipse.sisu.inject-0.3.5.jar
+apache-maven-3.8.6/lib/plexus-interpolation-1.26.jar
+apache-maven-3.8.6/lib/plexus-component-annotations-2.1.0.jar
+apache-maven-3.8.6/lib/maven-compat-3.8.6.jar
+apache-maven-3.8.6/lib/wagon-provider-api-3.5.1.jar
+apache-maven-3.8.6/lib/org.eclipse.sisu.plexus-0.3.5.jar
+apache-maven-3.8.6/lib/commons-cli-1.4.jar
+apache-maven-3.8.6/lib/wagon-http-3.5.1-shaded.jar
+apache-maven-3.8.6/lib/jcl-over-slf4j-1.7.36.jar
+apache-maven-3.8.6/lib/wagon-file-3.5.1.jar
+apache-maven-3.8.6/lib/maven-resolver-connector-basic-1.6.3.jar
+apache-maven-3.8.6/lib/maven-resolver-transport-wagon-1.6.3.jar
+apache-maven-3.8.6/lib/maven-slf4j-provider-3.8.6.jar
+apache-maven-3.8.6/lib/jansi-2.4.0.jar
+[root@ip-172-31-89-84 maven]# ls
+apache-maven-3.8.6  apache-maven-3.8.6-bin.tar.gz
+[root@ip-172-31-89-84 maven]# cd apache-maven-3.8.6/
+[root@ip-172-31-89-84 apache-maven-3.8.6]# ll
+total 36
+drwxr-xr-x 2 root root    97 Jul 21 04:43 bin
+drwxr-xr-x 2 root root    76 Jul 21 04:43 boot
+drwxr-xr-x 3 root root    63 Jun  6 16:16 conf
+drwxr-xr-x 4 root root  4096 Jul 21 04:43 lib
+-rw-r--r-- 1 root root 17568 Jun  6 16:16 LICENSE
+-rw-r--r-- 1 root root  5141 Jun  6 16:16 NOTICE
+-rw-r--r-- 1 root root  2612 Jun  6 16:16 README.txt
+[root@ip-172-31-89-84 apache-maven-3.8.6]# pwd
+/opt/maven/apache-maven-3.8.6
+[root@ip-172-31-89-84 apache-maven-3.8.6]# cd
+[root@ip-172-31-89-84 ~]# ls -a
+.  ..  .bash_logout  .bash_profile  .bashrc  .cshrc  .ssh  .tcshrc  .viminfo
+[root@ip-172-31-89-84 ~]# vi .bash_profile
+[root@ip-172-31-89-84 ~]# vi .bash_profile
+[root@ip-172-31-89-84 ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/java-1.8.0-openjd                                                                                        k-1.8.0.161-0.b14.el7_4.x86_64:/root/bin
+[root@ip-172-31-89-84 ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/java-1.8.0-openjd                                                                                        k-1.8.0.161-0.b14.el7_4.x86_64:/opt/maven/apache-maven-3.8.6:/opt/maven/apache-m                                                                                        aven-3.8.6/bin:/root/bin
+[root@ip-172-31-89-84 ~]# yum install git -y
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                               | 3.7 kB     00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package git.x86_64 0:2.37.1-1.amzn2.0.1 will be installed
+--> Processing Dependency: perl-Git = 2.37.1-1.amzn2.0.1 for package: git-2.37.1                                                                                        -1.amzn2.0.1.x86_64
+--> Processing Dependency: git-core-doc = 2.37.1-1.amzn2.0.1 for package: git-2.                                                                                        37.1-1.amzn2.0.1.x86_64
+--> Processing Dependency: git-core = 2.37.1-1.amzn2.0.1 for package: git-2.37.1                                                                                        -1.amzn2.0.1.x86_64
+--> Processing Dependency: perl(Term::ReadKey) for package: git-2.37.1-1.amzn2.0                                                                                        .1.x86_64
+--> Processing Dependency: perl(Git::I18N) for package: git-2.37.1-1.amzn2.0.1.x                                                                                        86_64
+--> Processing Dependency: perl(Git) for package: git-2.37.1-1.amzn2.0.1.x86_64
+--> Running transaction check
+---> Package git-core.x86_64 0:2.37.1-1.amzn2.0.1 will be installed
+---> Package git-core-doc.noarch 0:2.37.1-1.amzn2.0.1 will be installed
+---> Package perl-Git.noarch 0:2.37.1-1.amzn2.0.1 will be installed
+--> Processing Dependency: perl(Error) for package: perl-Git-2.37.1-1.amzn2.0.1.                                                                                        noarch
+---> Package perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2 will be installed
+--> Running transaction check
+---> Package perl-Error.noarch 1:0.17020-2.amzn2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch       Version                   Repository      Size
+================================================================================
+Installing:
+ git                  x86_64     2.37.1-1.amzn2.0.1        amzn2-core      71 k
+Installing for dependencies:
+ git-core             x86_64     2.37.1-1.amzn2.0.1        amzn2-core     6.4 M
+ git-core-doc         noarch     2.37.1-1.amzn2.0.1        amzn2-core     2.8 M
+ perl-Error           noarch     1:0.17020-2.amzn2         amzn2-core      32 k
+ perl-Git             noarch     2.37.1-1.amzn2.0.1        amzn2-core      46 k
+ perl-TermReadKey     x86_64     2.30-20.amzn2.0.2         amzn2-core      31 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+5 Dependent packages)
+
+Total download size: 9.3 M
+Installed size: 40 M
+Downloading packages:
+(1/6): git-2.37.1-1.amzn2.0.1.x86_64.rpm                   |  71 kB   00:00
+(2/6): git-core-doc-2.37.1-1.amzn2.0.1.noarch.rpm          | 2.8 MB   00:00
+(3/6): git-core-2.37.1-1.amzn2.0.1.x86_64.rpm              | 6.4 MB   00:00
+(4/6): perl-Error-0.17020-2.amzn2.noarch.rpm               |  32 kB   00:00
+(5/6): perl-TermReadKey-2.30-20.amzn2.0.2.x86_64.rpm       |  31 kB   00:00
+(6/6): perl-Git-2.37.1-1.amzn2.0.1.noarch.rpm              |  46 kB   00:00
+--------------------------------------------------------------------------------
+Total                                               18 MB/s | 9.3 MB  00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : git-core-2.37.1-1.amzn2.0.1.x86_64                           1/6
+  Installing : git-core-doc-2.37.1-1.amzn2.0.1.noarch                       2/6
+  Installing : 1:perl-Error-0.17020-2.amzn2.noarch                          3/6
+  Installing : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                    4/6
+  Installing : perl-Git-2.37.1-1.amzn2.0.1.noarch                           5/6
+  Installing : git-2.37.1-1.amzn2.0.1.x86_64                                6/6
+  Verifying  : perl-TermReadKey-2.30-20.amzn2.0.2.x86_64                    1/6
+  Verifying  : git-core-doc-2.37.1-1.amzn2.0.1.noarch                       2/6
+  Verifying  : perl-Git-2.37.1-1.amzn2.0.1.noarch                           3/6
+  Verifying  : git-2.37.1-1.amzn2.0.1.x86_64                                4/6
+  Verifying  : git-core-2.37.1-1.amzn2.0.1.x86_64                           5/6
+  Verifying  : 1:perl-Error-0.17020-2.amzn2.noarch                          6/6
+
+Installed:
+  git.x86_64 0:2.37.1-1.amzn2.0.1
+
+Dependency Installed:
+  git-core.x86_64 0:2.37.1-1.amzn2.0.1
+  git-core-doc.noarch 0:2.37.1-1.amzn2.0.1
+  perl-Error.noarch 1:0.17020-2.amzn2
+  perl-Git.noarch 0:2.37.1-1.amzn2.0.1
+  perl-TermReadKey.x86_64 0:2.30-20.amzn2.0.2
+
+Complete!
+
+
+
+
+#############################3
+
+M2 three lines are main lines (227,228,230)
+ more .bash_profile
+ 
+ # .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64
+
+M2_HOME=/opt/maven/apache-maven-3.8.6   
+M2=$M2_HOME/bin
+
+PATH=$PATH:$JAVA_HOME:$M2_HOME:$M2:$HOME/bin
+
+
+export PATH
+
+#################################################
+
+
+1. Update maven details 
+
+manage jenkins --> global tool configuration --> maven 
+  given name : maven and path : /opt/maven/apache-maven-3.8.6
+  
+  2. Install plugin 
+  
+   install maven invoker * github 
+  3. create new item --> slecet maven project --> give Source Code Management git ( Repository URL -->gitpath maven project) --> Build (pom.xml)  Goals and options (install package)it will be there 
+  
+  then build now
+  
+  
