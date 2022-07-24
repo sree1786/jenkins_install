@@ -2,17 +2,16 @@
 
 [root@ip-172-31-89-84 ~]# mkdir -p /opt/maven
 [root@ip-172-31-89-84 ~]# cd /opt/maven/
-[root@ip-172-31-89-84 maven]# wget https://dlcdn.apache.org/maven/maven-3/3.8.6/                                                                                        binaries/apache-maven-3.8.6-bin.tar.gz
---2022-07-21 04:42:30--  https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/a                                                                                        pache-maven-3.8.6-bin.tar.gz
-Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644
-Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connecte                                                                                        d.
+[root@ip-172-31-89-84 maven]# wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+--2022-07-21 04:42:30--  https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644 Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connecte                                                 d.
 HTTP request sent, awaiting response... 200 OK
 Length: 8676320 (8.3M) [application/x-gzip]
 Saving to: ‘apache-maven-3.8.6-bin.tar.gz’
 
 100%[======================================>] 8,676,320   --.-K/s   in 0.08s
 
-2022-07-21 04:42:30 (101 MB/s) - ‘apache-maven-3.8.6-bin.tar.gz’ saved [8676320/                                                                                        8676320]
+2022-07-21 04:42:30 (101 MB/s) - ‘apache-maven-3.8.6-bin.tar.gz’ saved [8676320/8676320]
 
 [root@ip-172-31-89-84 maven]# ls
 apache-maven-3.8.6-bin.tar.gz
