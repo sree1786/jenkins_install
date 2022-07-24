@@ -11,7 +11,7 @@
    ```sh 
    # Create tomcat directory
    cd /opt
-   wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
+   wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz  ( go to https://tomcat.apache.org/download-80.cgi --> copythe link address of tar.gz here)
    tar -xvzf /opt/apache-tomcat-<version>.tar.gz
    ```
 2. give executing permissions to startup.sh and shutdown.sh which are under bin. 
