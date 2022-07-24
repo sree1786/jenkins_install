@@ -119,6 +119,7 @@ drwxr-xr-x 4 root root  4096 Jul 21 04:43 lib
 [root@ip-172-31-89-84 ~]# ls -a
 .  ..  .bash_logout  .bash_profile  .bashrc  .cshrc  .ssh  .tcshrc  .viminfo
 [root@ip-172-31-89-84 ~]# vi .bash_profile
+------Please chcek last of this sheet what you want update ----------------
 [root@ip-172-31-89-84 ~]# vi .bash_profile
 [root@ip-172-31-89-84 ~]# echo $PATH
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/java-1.8.0-openjd                                                                                        k-1.8.0.161-0.b14.el7_4.x86_64:/root/bin
