@@ -9,7 +9,7 @@ Master & child server:
  
  useradd ansadmin
  passwd ansadmin
- visudo   ( add this line after root --> ansadmin ALL=(ALL)       ALL ) 
+ visudo   ( add this line after root --> ansadmin ALL=(ALL)       NOPASSWD: ALL ) 
  cd /etc/ssh
  ls
  vi sshd_config  ( disable --> PasswordAuthentication no  & enable PasswordAuthentication yes )
