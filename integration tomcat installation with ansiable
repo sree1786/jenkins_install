@@ -1,0 +1,61 @@
+++++++++++++++++++++++++
+
+Before this steps please completed anaible file means build master and child server with all installation 
+
+########################################################
+
+
+
+Step1.   Install jenkins plugin  --> publish over ssh
+
+step2:   manage jenkis --> configure systems --> publish over to ssh --> ssh servers --> add 
+
+          name : ansiblemaster
+          hostname: ipaddress (private bez of same vpc)
+          username : ansadmin
+
+              click advances session 
+              password: asnadmin password 
+               clieck test connection ( its show success or fail for our confirmation )
+  
+ step3:    Manage jenkisn --> modify job config --> remove tomcat in on post build session 
+  
+ step 4:    select post steps --> select Send files or execute commands over SSH ( this is avaible once you insaltted publish over ssh plugin)
+            update below info
+	 
+	                ssh server : name --> ansiablemaster ( automactally come bez we updated in congifg area on ealier steps)
+	                            transfer : source file--> webapp/target/*.war
+	                            Remote directory : //home//ansadmin//playbook
+	
+	
+	                once again 
+	
+	                  select post steps --> select Send files or execute commands over SSH ( this is avaible once you insaltted publish over ssh plugin)
+                    update below info
+	 
+	                ssh server : name --> ansiablemaster ( automactally come bez we updated in congifg area on ealier steps)
+	                              exec command : ansible-playbook /home/ansadmin/playbook/copyfile.yml ( just only this line)
+		
+step 5 ---->  click the build  ---> and chcek .war file created under /home/ansadmin/playbook/webapp/target location 
+              and also chcek copied to /opt/apache-tomcat-8.5.81/webapps/
+              
+
+
+
+step 6: test --> http://IPADRSSS:8090/webapp
+ ##################################################################################  
+    
+ /home/ansadmin/playbook/copyfile.yml ( below you need to update on copyfile.yml)   
+---
+- hosts: all_hosts  ( what you updated on /etc/ansible/hosts file ex: [webserver] 54.167.179.56 )
+  become: true
+  tasks:
+      - name: copy war onto tomcat
+        copy:
+          src: /home/ansadmin/playbook/webops/target/webapp.war
+          dest: /opt/apache-tomcat-8.5.81/webapps/
+          
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
