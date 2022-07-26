@@ -1,0 +1,65 @@
+1.	Launch an EC2 instance for Docker host
+
+2.	Install docker on EC2 instance and start services
+yum install docker
+service docker start
+
+3.	create a new user for Docker management and add him to Docker (default) group
+useradd dockeradmin
+passwd dockeradmin
+usermod -aG docker dockeradmin
+visudo
+ansadmin ALL=(ALL)       NOPASSWD: ALL (add dockeradmin user after root)
+vi sshd_config  ( disable --> PasswordAuthentication no  & enable PasswordAuthentication yes )
+service sshd restart
+
+4. Write a Docker file under /opt/docker
+mkdir /opt/docker
+
+chown -R dockeradmin:dockeradmin /opt/docker/
+
+### vi Dockerfile
+# Pull base image 
+From tomcat:8-jre8 
+
+# Maintainer
+MAINTAINER "sreekanth" 
+
+# copy war file on to container 
+COPY ./webapp.war /usr/local/tomcat/webapps
+
+
+5.	Login to Jenkins console and add Docker server to execute commands from Jenkins
+Manage Jenkins --> Configure system --> Publish over SSH --> add Docker server and credentials
+        Click add 
+           SSH server : dockerhost
+           Hostname: server ip (public ip)
+      Username: dockeradmin
+      Click advange  enable password password : give dockeradminpassword
+
+6.	Create Jenkins job
+A) Source Code Management
+Repository : https://github.com/sree1786/ValaxyTech-hello-world 
+Branches to build : */master
+B) Build Root POM: pom.xml
+Goals and options : clean install package
+C) send files or execute commands over SSH Name: docker_host
+Source files : webapp/target/*.war Remove prefix : webapp/target Remote directory : //opt//docker
+Exec command[s] :
+docker stop sree_demo;
+docker rm -f sree_demo;
+docker image rm -f sree_demo;
+cd /opt/docker;
+docker build -t sree_demo .
+D) send files or execute commands over SSH
+Name: docker_host
+Exec command : docker run -d --name sree_demo -p 8090:8080 sree_demo
+
+7.	Login to Docker host( through ssh) and check images and containers. (no images and containers)
+
+8.	Execute Jenkins job
+
+9.	check images and containers again on Docker host. This time an image and container get creates through Jenkins job
+
+10.	Access web application from browser which is running on container
+<docker_host_Public_IP>:8090
