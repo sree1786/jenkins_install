@@ -1,0 +1,125 @@
+step1 . install docker in ansiable server
+		yum install docker -yum
+		service docker start
+		service docker status
+step2. add ansadmin user in docker group
+		usermod -aG docker ansadmin
+		( login to ansadmin user and chcek id )
+		mkdir /opt/docker
+		chown ansadmin:ansadmin /opt/docker
+step3. login to docker server
+		yum install docker -yum
+		service docker start
+		service docker status
+		
+		add ansadmin user in docker group
+		
+		usermod -aG docker ansadmin
+step4. Login to Jenkins console
+
+step5. Create Jenkins job, Fill the following details,
+
+		Source Code Management:
+		Repository : https://github.com/sree1786/ValaxyTech-hello-world 
+		Branches to build : */master
+		Build:
+		Root POM:pom.xml
+		Goals and options : clean install package
+		Post Steps
+		Send files or execute commands over SSH
+
+		Name: ansible_server
+		Source files : webapp/target/*.war
+		Remove prefix : webapp/target
+		Remote directory : //opt//docker
+		Send files or execute commands over SSH
+
+		Name: ansible_server
+		Source files : Dockerfile
+		Remote directory : //opt//docker
+		Exec Command:
+			cd /opt/docker;
+			docker build -t sree_demo .
+			docker tag sree_demo sree1786/sree_demo
+			docker push sree1786/sree_demo
+			docker rmi sree_demo sree1786/sree_demo
+step 6: Login to Docker host and check images and containers
+
+step7: login to docker hub and check. shouldn't find images with for sree_demo
+
+step 8: Execute Jenkins job
+
+step9: check images in Docker hub. Now you could able to see new images pushed to sree1786 Docker_Hub
+
+
+#######################################################################
+
+step 10: go to ansible server  create yml file like file 			(create_docker_container.yml)
+
+  ---
+  - hosts: webservers
+    become: true
+    tasks:
+       - name: stop previous version docker
+         shell: docker stop sree_demo
+       - name: remove stopped container
+         shell: docker rm -f sree_demo
+       - name: remove docker images
+         shell: docker image rm -f sree1786/sree_demo
+       - name: create the docker container
+         shell: docker run -d --name sree_demo -p 8090:8080 sree1786/sree_demo
+step 11: check conncetion between docker server and ansible server if dont have build it and sent sshd keys . Test ansible all -m ping working properly or not
+
+step 12: go to jenkins server and edit existing docker job and add Send files or execute commands over SSH and give below details .
+	Name: ansible_server
+		Source files : ansible_server
+		
+		Exec Command:
+			cd /home/ansadmin/playbook;
+			ansible-playbook  -i /home/ansadmin/playbook/create_docker_container.yml
+step 13: chcek the hosts name in ansible server 
+		/etc/ansible/host ( check targer servers or there not)
+		
+		cross chcek both docker server & ansible server docker up and running
+step 14: click build and chcek docker hub new file came to repository and chcek serveer docker cotainer up or not . take that ip test in externely ( ec2 instance add 8090 port )
+
+step 15: poll scm add * * * * * ( five starts its indicate every min cronjob running)
+		then change some thing git index file its will reflect docker hub/docker container and output also changes
+############################################################################
+
+How to update the version in docker hub using ansible
+
+step 16:  in previoues step we have just push the file to docker huyb but not updated version . 
+
+	here we can update for that you can update below details on command area
+	
+cd /opt/docker;
+docker build -t $JOB_NAME:v1.$BUILD_ID .
+docker tag $JOB_NAME:v1.$BUILD_ID sree1786/$JOB_NAME:v1.$BUILD_ID;
+docker tag $JOB_NAME:v1.$BUILD_ID sree1786/$JOB_NAME:latest;
+docker push sree1786/$JOB_NAME:v1.$BUILD_ID;
+docker push sree1786/$JOB_NAME:latest;
+docker rmi $JOB_NAME:v1.$BUILD_ID sree1786/$JOB_NAME:v1.$BUILD_ID sree1786/$JOB_NAME:latest;
+ 
+ 
+ and also you need to update create_docker_container.yml for below details 
+ 
+ ---
+  - hosts: webservers
+    become: true
+    tasks:
+       - name: stop previous version docker
+         shell: docker stop sree_demo
+
+       - name: remove stopped container
+         shell: docker rm -f sree_demo
+
+       - name: remove docker images
+         shell: docker image rm -f sree1786/dockerhub-jenkins-docker:latest
+
+       - name: create the docker container
+         shell: docker run -d --name sree_demo -p 8090:8080 sree1786/dockerhub-jenkins-docker:latest
+		 
+step 17: once you updated then excute the job it will create new repositoy with version and also update new container in decoker server just login and chcek 
+
+step 18: access url --> http://IPadress:8090
